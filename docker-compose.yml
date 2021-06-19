@@ -1,0 +1,41 @@
+version: '3.7'
+
+networks:
+  election_system-network:
+    driver: bridge
+
+services:
+# Database
+  mysql-database:
+    image: mysql:8.0.22
+    container_name: election_system_mysql
+    restart: unless-stopped
+    tty: true
+    networks:
+      - election_system-network
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: election_system
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: election_system_passw0rd
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 7s
+      timeout: 5s
+    volumes:
+      - ./data/mysql:/docker-entrypoint-initdb.d
+
+# Web / API
+  election_system-web:
+    image: ambientum/php:7.4-nginx
+    container_name: election_system_laravel
+    volumes:
+      - ./:/var/www/app
+      - ./.env:/var/www/app/.env
+    networks:
+      - election_system-network
+    ports:
+      - "8000:8080"
+    links:
+      - mysql-database
