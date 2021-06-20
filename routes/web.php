@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[VoteController::class,'index'])->name('main');
+
 Route::resource('votes', VoteController::class)->except(['create','edit','update','destroy']);
 Route::resource('candidates', CandidateController::class)->except(['create','edit','update']);
