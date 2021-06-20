@@ -25,7 +25,7 @@ class Vote extends Model
     protected $fillable = [
         'email',
         'name',
-        'candidate_id'
+        'candidate_id',
     ];
 
     /**
