@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/login', function () {
 Route::get('/admin ', function () {
     return view('admin');
 })->name('admin');
+
+Route::resource('candidates', CandidateController::class)->except(['create','edit','update']);
