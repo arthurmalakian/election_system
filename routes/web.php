@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main');
+})->name('main');
+Route::get('/login', function () {
+    return view('auth');
+})->name('login');
+Route::get('/admin ', function () {
+    return view('admin');
+})->name('admin');
