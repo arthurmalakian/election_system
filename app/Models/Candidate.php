@@ -42,7 +42,7 @@ class Candidate extends Model
      *
      * @return integer
      */
-    public function getVoteCount()
+    public function getVoteCountAttribute()
     {
         return $this->votes->count();
     }
