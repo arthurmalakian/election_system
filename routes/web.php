@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-})->name('main');
-Route::get('/login', function () {
-    return view('auth');
-})->name('login');
-Route::get('/admin ', function () {
-    return view('admin');
-})->name('admin');
-
+Route::get('/',[VoteController::class,'index'])->name('main');
+Route::resource('votes', VoteController::class)->except(['create','edit','update','destroy']);
 Route::resource('candidates', CandidateController::class)->except(['create','edit','update']);
