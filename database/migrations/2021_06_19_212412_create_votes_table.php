@@ -15,6 +15,7 @@ class CreateVotesTable extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->string("email")->unique()->nullable(false)->primary();
+            $table->string("name");
             $table->unsignedBigInteger("candidate_id");
             $table->foreign("candidate_id")->references("id")
             ->on("candidates")->onDelete("cascade");
