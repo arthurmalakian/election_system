@@ -16,7 +16,7 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $candidates = Candidate::query()->get();
+        $candidates = Candidate::all();
         return view('admin',compact('candidates'));
     }
 
@@ -31,11 +31,11 @@ class CandidateController extends Controller
         DB::beginTransaction();
         try
         {
-            $candidate_data = [
+            $candidateData = [
                 'name' => $request->input('name'),
                 'party' => $request->input('party'),
             ];
-            Candidate::create($candidate_data);
+            Candidate::create($candidateData);
             DB::commit();
             return redirect()->route('candidates.index');
 
