@@ -2,6 +2,12 @@
 
 Este é um sistema de eleição básico.
 
+## Changelog
+
+- 21/06/2021
+    Limpeza visual;
+    Mudança de nomes de variáveis para adotar padrão;
+    Remoção de métodos ineficientes.
 ## Instalação
 
 
