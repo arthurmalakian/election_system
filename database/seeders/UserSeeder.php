@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
         //criando user admin, mude o username/password em .env
         $data = [
             'name' => 'admin',
-            'email' => env('ADMIN_USERNAME'),
-            'password' => env('ADMIN_PASSWORD')
+            'email' => env('ADMIN_LOGIN'),
+            'password' => bcrypt(env('ADMIN_PASSWORD'))
         ];
         User::create($data);
     }
