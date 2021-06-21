@@ -35,7 +35,7 @@ Painel de Administração - Sistema de Eleição
                 <div class="card-body text-dark">
                 <h5 class="card-title">{{$candidate->name}}</h5>
                 <p class="card-text">{{$candidate->party}}</p>
-                <p class="card-text">Votos: {{$candidate->vote_count}}</p>
+                <p class="card-text">Votos: {{$candidate->votes_count}}</p>
                 <form action="{{route('candidates.destroy',$candidate->id)}}" method="post">
                     @method('DELETE')
                     @csrf

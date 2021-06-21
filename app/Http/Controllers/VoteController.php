@@ -32,23 +32,19 @@ class VoteController extends Controller
         DB::beginTransaction();
         try
         {
-            $vote_data = [
+            $voteData = [
                 'email' => $request->input('email'),
                 'name' => $request->input('name'),
                 'candidate_id' => $request->input('candidate_id')
             ];
-            Vote::create($vote_data);
+            Vote::create($voteData);
             DB::commit();
-            $message = "Voto cadastrado com sucesso!";
-            $candidates = Candidate::query()->get();
-            return view('main',compact('message','candidates'));
+            return redirect()->back()->with('success','Voto cadastrado com sucesso.');
 
         }catch(\Exception $exception)
         {
             DB::rollback();
-            $error = true;
-            $candidates = Candidate::query()->get();
-            return view('main',compact('error','candidates'));
+            return redirect()->back()->with('danger','Não foi possível votar no candidato.');
         }
     }
 }
