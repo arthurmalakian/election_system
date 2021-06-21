@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Autenticação - Sistema de Eleição
+@endsection
 @section('content')
     <div class="d-flex justify-content-center align-items-center container mt-4">
         @if ($errors->any())
