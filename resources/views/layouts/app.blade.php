@@ -11,7 +11,7 @@
     <title>Hello, world!</title>
   </head>
   <body style="background-color: rgb(0, 0, 0)">
-    @include('Components.navbar')
+    @include('components.navbar')
     @yield('content')
   </body>
 </html>

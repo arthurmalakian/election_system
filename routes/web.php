@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[VoteController::class,'index'])->name('main');
 
 Route::get('/login',[BasicAuthController::class,'login'])->name('login');
+Route::get('/logout',[BasicAuthController::class,'logout'])->name('logout');
 Route::post('/auth',[BasicAuthController::class,'auth'])->name('auth.user');
 
 Route::resource('votes', VoteController::class)->except(['create','edit','update','destroy']);
