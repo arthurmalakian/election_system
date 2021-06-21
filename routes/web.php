@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasicAuthController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
@@ -17,5 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[VoteController::class,'index'])->name('main');
 
+Route::get('/login',[BasicAuthController::class,'login'])->name('login');
+Route::post('/auth',[BasicAuthController::class,'auth'])->name('auth.user');
+
 Route::resource('votes', VoteController::class)->except(['create','edit','update','destroy']);
-Route::resource('candidates', CandidateController::class)->except(['create','edit','update']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('candidates', CandidateController::class)->except(['create','edit','update']);
+});

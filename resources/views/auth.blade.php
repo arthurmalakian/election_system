@@ -2,17 +2,35 @@
 
 @section('content')
     <div class="d-flex justify-content-center align-items-center container mt-4">
+        @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if (session('danger'))
+        <div class="alert alert-danger align-items-center" role="alert">
+            {{session('danger')}}
+        </div>
+        @endif
+    </div>
+    <div class="d-flex justify-content-center align-items-center container mt-4">
         <div class="row">
+            <form action="{{route('auth.user')}}" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="email" class="control-label">Email</label>
-                    <input type="email" class="form-control" id="email" aria-labelledby="emailnotification">
+                    <input type="email" class="form-control" id="email" name="email" aria-labelledby="emailnotification">
                 </div>
                 <div class="form-group">
                     <label for="password" class="control-label">Senha</label>
-                    <input type="password" class="form-control" id="password" aria-labelledby="passwordnotification">
+                    <input type="password" class="form-control" id="password" name="password" aria-labelledby="passwordnotification">
                 </div>
                 <div class="form-group mt-2">
-                    <input type="submit" value="Login" class="form-control" aria-labelledby="submitbutton">
+                    <input type="submit" value="Acessar painel" class="form-control" aria-labelledby="submitbutton">
                 </div>
             </form>
         </div>

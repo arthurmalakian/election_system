@@ -5,7 +5,7 @@
               <a class="nav-link" href="{{route('main')}}">Votar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Painel de Administração</a>
+              <a class="nav-link" href="{{route('candidates.index')}}">Painel de Administração</a>
             </li>
           </ul>
         </div>
