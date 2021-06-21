@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($candidates->count() == 0)
-        <div class="alert alert-warning" role="alert">
-            Não há nenhum candidato cadastrado no sistema.
-        </div>
-    @endif
+    <div class="d-flex justify-content-center align-items-stretch container mt-4">
+        @if ($candidates->count() == 0)
+            <div class="alert alert-warning" role="alert">
+                Não há nenhum candidato cadastrado no sistema.
+            </div>
+        @endif
+    </div>
     <div class="d-flex justify-content-center align-items-center container mt-4">
         <form action="{{route('candidates.store')}}" method="post">
             @csrf
