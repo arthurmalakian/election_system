@@ -16,7 +16,7 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $candidates = Candidate::all();
+        $candidates = Candidate::withCount(['votes'])->get();
         return view('admin',compact('candidates'));
     }
 

@@ -36,14 +36,4 @@ class Candidate extends Model
     {
         return $this->hasMany(Vote::class, 'candidate_id', 'id');
     }
-
-    /**
-     * Get the number of the votes for the Candidate
-     *
-     * @return integer
-     */
-    public function getVoteCountAttribute()
-    {
-        return $this->votes->count();
-    }
 }
