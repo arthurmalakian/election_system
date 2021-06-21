@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use App\Http\Requests\LogoutRequest;
 use Illuminate\Support\Facades\Auth;
 
 class BasicAuthController extends Controller
@@ -22,5 +23,10 @@ class BasicAuthController extends Controller
         }else{
             return redirect()->back()->with('danger','Dados incorretos.');
         }
+    }
+
+    public function logout(LogoutRequest $request){
+        Auth::logout();
+        return redirect()->route('main');
     }
 }

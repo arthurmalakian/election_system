@@ -46,9 +46,9 @@ class VoteController extends Controller
         }catch(\Exception $exception)
         {
             DB::rollback();
-            $message = "Email já votou!";
+            $error = true;
             $candidates = Candidate::query()->get();
-            return view('main',compact('message','candidates'));
+            return view('main',compact('error','candidates'));
         }
     }
 }
