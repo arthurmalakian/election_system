@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+Painel de Administração - Sistema de Eleição
+@endsection
 @section('content')
     <div class="d-flex justify-content-center align-items-stretch container mt-4">
         @if ($candidates->count() == 0)

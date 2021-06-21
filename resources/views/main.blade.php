@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Sistema de Eleição - Vote Já!
+@endsection
+
 @section('content')
 
 @isset($message)
