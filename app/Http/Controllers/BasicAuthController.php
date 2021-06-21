@@ -16,9 +16,8 @@ class BasicAuthController extends Controller
 
     public function auth(AuthRequest $request)
     {
-        $user_data = $request->only('email','password');
-
-        if(Auth::attempt($user_data)){
+        $userData = $request->only('email','password');
+        if(Auth::attempt($userData)){
             return redirect()->route('candidates.index');
         }else{
             return redirect()->back()->with('danger','Dados incorretos.');
