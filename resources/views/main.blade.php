@@ -6,12 +6,16 @@ Sistema de Eleição - Vote Já!
 
 @section('content')
 
-@isset($message)
-    <div class="alert alert-warning" role="alert">
-        {{$message}}
-    </div>
-@endisset
-
+@if (session('danger'))
+<div class="alert alert-danger align-items-center" role="alert">
+    {{session('danger')}}
+</div>
+@endif
+@if (session('success'))
+<div class="alert alert-success align-items-center" role="alert">
+    {{session('success')}}
+</div>
+@endif
 <div class="d-flex justify-content-center align-items-stretch container mt-4">
     @if ($candidates->count() == 0)
         <div class="alert alert-warning" role="alert">
@@ -39,7 +43,7 @@ Sistema de Eleição - Vote Já!
     <div class="p-2 bd-highlight mt-4">
         <label for="email" class="control-label text-white">Email</label>
         <input type="email" class="form-control" id="email" name="email" aria-labelledby="emailnotification">
-        <small id="emailnotification" class="form-text {{isset($error) ? 'text-danger' : 'text-muted'}}"> * Um voto por e-mail</small>
+        <small id="emailnotification" class="form-text {{session('danger') ? 'text-danger' : 'text-muted'}}"> * Um voto por e-mail</small>
     </div>
     <div class="p-2 bd-highlight">
         <label for="name" class="control-label text-white">Nome</label>
